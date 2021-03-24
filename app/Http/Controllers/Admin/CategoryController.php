@@ -30,11 +30,9 @@ class CategoryController extends Controller
     {
 
         $currentID = DB::table('Categories')->select('id')->orderBy('id', 'desc')->limit(1)->get();;
-        if (!isset($currentID[0]->id))
-        {
+        if (!isset($currentID[0]->id)) {
             $last = 1;
-        }else
-        {
+        } else {
             $currentID = $currentID[0]->id;
             $last = ++$currentID;
         }
@@ -69,11 +67,10 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        if($category == null)
-        {
+        if ($category == null) {
             return redirect()->route('categories.index');
         }
-        return view('admin.categories.edit',compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**

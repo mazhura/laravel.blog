@@ -61,7 +61,8 @@
                         <div class="mb-3 row">
                             <label for="title" class="col-sm-2 col-form-label">Post name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{$post->title}}">
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                                       name="title" value="{{$post->title}}">
                             </div>
                         </div>
 

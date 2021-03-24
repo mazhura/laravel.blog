@@ -22,18 +22,18 @@
                     <div class="alert alert-success" role="alert">
                         {{session('deleted')}}
                     </div>
-                    @elseif(session('not_deleted'))
+                @elseif(session('not_deleted'))
                     <div class="alert alert-danger" role="alert">
                         {{session('not_deleted')}}
                     </div>
                 @else
-                    @endif
+                @endif
 
                 @if(session('success'))
                     <div class="alert alert-success" role="alert">
                         {{session('success')}}
                     </div>
-                    @endif
+                @endif
 
             </div><!-- /.container-fluid -->
         </section>
@@ -90,21 +90,23 @@
                                         <td>
                                             No photo!
                                         </td>
-                                        @endif
+                                    @endif
                                     <td>{{$post->content}}</td>
                                     <td>{{$post->category->title}}</td>
                                     <td>{{$post->tags->pluck('title')->join(' , ')}}</td>
 
                                     <td>{{$post->created_at}}</td>
                                     <td class="btn-group">
-                                        <a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary btn-info btn-sm float-left">
+                                        <a href="{{route('posts.edit',$post->id)}}"
+                                           class="btn btn-primary btn-info btn-sm float-left">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
-                                        <form action="{{route('posts.destroy',$post->id)}}" method="post" class="float-left">
+                                        <form action="{{route('posts.destroy',$post->id)}}" method="post"
+                                              class="float-left">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-primary btn-danger btn-sm"
-                                            onclick="confirm('Delete post?')">
+                                                    onclick="confirm('Delete post?')">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>

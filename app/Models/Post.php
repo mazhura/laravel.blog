@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
     use HasFactory;
     use Sluggable;
 
-    protected $fillable = ['title','description','content','category_id','thumbnail'];
+    protected $fillable = ['title', 'description', 'content', 'category_id', 'thumbnail'];
 
     public function tags()
     {
