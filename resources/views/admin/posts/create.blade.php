@@ -57,10 +57,11 @@
                                 <input type="text" readonly disabled class="form-control" id="id" value="{{$newId}}">
                             </div>
                         </div>
+
                         <div class="mb-3 row">
                             <label for="title" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{old('title')}}">
                             </div>
                         </div>
 

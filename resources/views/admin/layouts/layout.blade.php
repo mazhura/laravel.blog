@@ -178,6 +178,31 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
+
+
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-pencil-alt"></i>
+                            <p>
+                                Posts
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('posts.index')}}" class="nav-link">
+                                    <i class="fa fa-tag nav-icon"></i>
+                                    <p>Posts list</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('posts.create')}}" class="nav-link">
+                                    <i class="fa fa-tag nav-icon"></i>
+                                    <p>New post</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-archive"></i>
                             <p>
@@ -200,7 +225,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fa fa-tags"></i>
@@ -220,30 +244,6 @@
                                 <a href="{{route('tags.create')}}" class="nav-link">
                                     <i class="fa fa-tag nav-icon"></i>
                                     <p>New tag</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-pencil-alt"></i>
-                            <p>
-                                Posts
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('posts.index')}}" class="nav-link">
-                                    <i class="fa fa-tag nav-icon"></i>
-                                    <p>Posts list</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('posts.create')}}" class="nav-link">
-                                    <i class="fa fa-tag nav-icon"></i>
-                                    <p>New post</p>
                                 </a>
                             </li>
                         </ul>
@@ -297,7 +297,9 @@
 
     })
 
-    $('.select2').select2()
+    $('.select2').select2({
+        theme:'bootstrap4',
+    })
 
     /*//Initialize Select2 Elements
     $('.select2bs4').select2({

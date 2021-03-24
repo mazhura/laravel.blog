@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(5);
-        return view('admin.posts.index',compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -35,57 +35,56 @@ class PostController extends Controller
             ->limit(1)
             ->get();
 
+        $newId = 1;
 
-        if (!isset($id[0]->id))
-        {
-          $newId = 1;
-        }else
-        {
+        if (isset($id[0]->id)) {
             $currentID = $id[0]->id;
             $newId = ++$currentID;
         }
 
-        $categories = Category::pluck('title','id')
-            ->all();
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
 
 
-
-        $tags = Tag::pluck('title','id')
-            ->all();
-
-
-        return view('admin.posts.create',compact('newId','categories','tags'));
+        return view('admin.posts.create', compact('newId', 'categories', 'tags'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required',
-            'description'=>'required',
-            'content'=>'required',
-            'category_id'=>'required|integer',
-            'thumbnail'=>'nullable|image',
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+            'thumbnail' => 'nullable|image',
         ]);
 
         $data = $request->all();
 
-        dd($data);
+        if ($request->hasFile('thumbnail'))
+        {
+            $folder = date('Y-m-d');
+            $data['thumbnail'] = $request->file('thumbnail')
+                ->store("images/{$folder}");
+        }
+
+        $post = Post::create($data);
 
 
-        session()->flash('success','Post created');
+        session()->flash('success', 'Post created');
         return redirect()->route('posts.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -96,7 +95,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -107,8 +106,8 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -118,17 +117,17 @@ class PostController extends Controller
         ]);
 
 
-        return redirect()->route('posts.index')->with('success','Post updated!');
+        return redirect()->route('posts.index')->with('success', 'Post updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        return redirect()->route('posts.index')->with('success','Post deleted!');
+        return redirect()->route('posts.index')->with('success', 'Post deleted!');
     }
 }
