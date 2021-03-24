@@ -2,6 +2,7 @@
 
 
 @section('content')
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -62,10 +63,14 @@
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Name</th>
+                                <th>Title</th>
+                                <th>Slug</th>
+                                <th>Description</th>
+                                <th>Thumbnail</th>
+                                <th>Content</th>
                                 <th>Category</th>
                                 <th>Tags</th>
-                                <th>Data</th>
+                                <th>Created at</th>
                                 <th style="width: 40px">Actions</th>
                             </tr>
                             </thead>
@@ -74,9 +79,22 @@
                                 <tr>
                                     <td>{{$post->id}}</td>
                                     <td>{{$post->title}}</td>
-                                    <td>{{$post->category->title}}</td>
-                                    <td>{{$post->tags}}</td>
                                     <td>{{$post->slug}}</td>
+                                    <td>{{$post->description}}</td>
+                                    @if($post->thumbnail !== null )
+                                        <td>
+                                            <img src="{{url('public/storage/'.$post->thumbnail)}}"
+                                                 width="40px" height="40px" style="border-radius: 50%"/>
+                                        </td>
+                                    @else
+                                        <td>
+                                            No photo!
+                                        </td>
+                                        @endif
+                                    <td>{{$post->content}}</td>
+                                    <td>{{$post->category->title}}</td>
+                                    <td>{{$post->tags->pluck('title')->join(' , ')}}</td>
+
                                     <td>{{$post->created_at}}</td>
                                     <td class="btn-group">
                                         <a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary btn-info btn-sm float-left">
@@ -97,7 +115,7 @@
                         </table>
                     @else
                         <div class="alert alert-danger">
-                            Empty posts!
+                            There are no posts!
                         </div>
                     @endif
                     <div class="mt-3">

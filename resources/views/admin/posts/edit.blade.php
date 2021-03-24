@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Изменение категории</h1>
+                        <h1>Edit post</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -36,10 +36,11 @@
 
                 <div class="card-header">
 
-                    <h3 class="card-title">Категория "<strong>{{$category->title}}</strong>"</h3>
+                    <h3 class="card-title">Post "<strong>{{$post->title}}</strong>"</h3>
 
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                        <button type="button" class="btn btn-tool"
+                                data-card-widget="collapse" data-toggle="tooltip"
                                 title="Collapse">
                             <i class="fas fa-minus"></i></button>
                         {{--<button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
@@ -47,21 +48,23 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('categories.update',['category'=>$category->id])}}" method="post">
+                    <form action="{{route('posts.update',['post'=>$post->id])}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="mb-3 row">
                             <label for="id" class="col-sm-2 col-form-label">ID</label>
                             <div class="col-sm-10">
-                                <input type="text" readonly disabled class="form-control" id="id" value="{{$category->id}}">
+                                <input type="text" readonly disabled class="form-control" id="id" value="{{$post->id}}">
                             </div>
                         </div>
+
                         <div class="mb-3 row">
-                            <label for="title" class="col-sm-2 col-form-label">Имя категории</label>
+                            <label for="title" class="col-sm-2 col-form-label">Post name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{$category->title}}">
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{$post->title}}">
                             </div>
                         </div>
+
                         <button type="submit" class="btn btn-primary mb-3">Создать</button>
                     </form>
 

@@ -71,10 +71,11 @@ class PostController extends Controller
         {
             $folder = date('Y-m-d');
             $data['thumbnail'] = $request->file('thumbnail')
-                ->store("images/{$folder}");
+                ->store("images/{$folder}",'public');
         }
 
         $post = Post::create($data);
+        $post->tags()->sync($request->tags);
 
 
         session()->flash('success', 'Post created');
@@ -96,11 +97,16 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit($id)
     {
-        return view('posts.edit');
+        $post = Post::find($id);
+        if($post == null)
+        {
+            return redirect()->route('admin.posts.index');
+        }
+        return view('admin.posts.edit',compact('post'));
     }
 
     /**

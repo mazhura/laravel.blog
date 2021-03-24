@@ -43,7 +43,7 @@
         </form>
 
         <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
+       {{-- <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
@@ -137,7 +137,7 @@
                     <i class="fas fa-th-large"></i>
                 </a>
             </li>
-        </ul>
+        </ul>--}}
     </nav>
     <!-- /.navbar -->
 
@@ -278,7 +278,9 @@
 <!-- jQuery -->
 
 <script src="{{url('public/assets/admin/js/jquery.min.js')}}"></script>
+{{--
 <script src="{{url('public/assets/admin/js/bootstrap.bundle.min.js')}}"></script>
+--}}
 <script src="{{url('public/assets/admin/js/adminlte.min.js')}}"></script>
 <script src="{{url('public/assets/admin/js/demo.js')}}"></script>
 <script src="{{url('public/assets/admin/selector/select2/js/select2.full.js')}}"></script>
