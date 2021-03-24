@@ -83,7 +83,7 @@
                                     <td>{{$post->description}}</td>
                                     @if($post->thumbnail !== null )
                                         <td>
-                                            <img src="{{url('public/storage/'.$post->thumbnail)}}"
+                                            <img src="{{url('public/app/public/'.$post->thumbnail)}}"
                                                  width="40px" height="40px" style="border-radius: 50%"/>
                                         </td>
                                     @else

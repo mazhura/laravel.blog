@@ -69,16 +69,19 @@ class PostController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             $folder = date('Y-m-d');
-            $data['thumbnail'] = $request->file('thumbnail')
-                ->store("images/{$folder}", 'public');
-        }
+
+            $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}",'public');
+
+
+            }
+
 
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
 
 
         session()->flash('success', 'Post created');
-        return redirect()->route('posts.index');
+        //return redirect()->route('posts.index');
     }
 
     /**
@@ -101,10 +104,12 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        $categories = Category::pluck('title','id');
+        $tags = Tag::pluck('title','id');
         if ($post == null) {
-            return redirect()->route('admin.posts.index');
+            return redirect()->route('posts.index');
         }
-        return view('admin.posts.edit', compact('post'));
+        return view('admin.posts.edit', compact('post','categories','tags'));
     }
 
     /**
