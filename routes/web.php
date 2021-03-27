@@ -21,12 +21,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::group(['prefix'=>'admin'],function (){
+Route::group(['prefix' => 'admin'], function () {
 
-    Route::get('/',[MainController::class,'index'])->name('admin.index');
+    Route::get('/', [MainController::class, 'index'])->name('admin.index');
 
     Route::resource('/categories', CategoryController::class);
+
     Route::resource('/tags', TagsController::class);
+
     Route::resource('/posts', PostController::class);
 
 });
@@ -40,5 +42,5 @@ Route::group(['prefix'=>'admin'],function (){
 
 
 
-//todo API return Route::view
+//todo make API
 
