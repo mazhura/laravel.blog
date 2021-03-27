@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', function () {return view('welcome');})->name('welcome');
+
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/posts', PostController::class);
 
 });
+
+Route::get('/test',[TestController::class,'index']);
 
 
 
