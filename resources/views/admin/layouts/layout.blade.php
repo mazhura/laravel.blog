@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="stylesheet" href='/public/assets/admin/css/admin.css'>
-    <link rel="stylesheet" href="/public/assets/admin/selector/select2-bootstrap4-theme/select2-bootstrap4.css">
-    <link rel="stylesheet" href="/public/assets/admin/selector/select2/css/select2.css">
+    <link rel="stylesheet" href='{{url('/assets/admin/css/admin.css')}}'>
+    <link rel="stylesheet" href="{{url('/assets/admin/selector/select2-bootstrap4-theme/select2-bootstrap4.css')}}">
+    <link rel="stylesheet" href="{{url('/assets/admin/selector/select2/css/select2.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -23,7 +23,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="../../index3.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
@@ -54,7 +54,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="{{url('public/assets/admin/img/user1-128x128.jpg')}}" alt="User Avatar"
+                            <img src="{{url('assets/admin/img/user1-128x128.jpg')}}" alt="User Avatar"
                                  class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
@@ -71,7 +71,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="{{url('public/assets/admin/img/user8-128x128.jpg')}}" alt="User Avatar"
+                            <img src="{{url('assets/admin/img/user8-128x128.jpg')}}" alt="User Avatar"
                                  class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
@@ -88,7 +88,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="{{url('public/assets/admin/img/user3-128x128.jpg')}}" alt="User Avatar"
+                            <img src="{{url('assets/admin/img/user3-128x128.jpg')}}" alt="User Avatar"
                                  class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
@@ -145,7 +145,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{route('welcome')}}" target="_blank" class="brand-link">
-            {{--<img src="{{url('public/assets/admin/img/AdminLTELogo.png')}}"
+            {{--<img src="{{url('/assets/admin/img/AdminLTELogo.png')}}"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">--}}
@@ -157,7 +157,7 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{url('public/assets/admin/img/user2-160x160.jpg')}}" class="img-circle elevation-2"
+                    <img src="{{url('assets/admin/img/user2-160x160.jpg')}}" class="img-circle elevation-2"
                          alt="User Image">
                 </div>
                 <div class="info">
@@ -277,13 +277,13 @@
 
 <!-- jQuery -->
 
-<script src="{{url('public/assets/admin/js/jquery.min.js')}}"></script>
+<script src="{{url('assets/admin/js/jquery.min.js')}}"></script>
 {{--
 <script src="{{url('public/assets/admin/js/bootstrap.bundle.min.js')}}"></script>
 --}}
-<script src="{{url('public/assets/admin/js/adminlte.min.js')}}"></script>
-<script src="{{url('public/assets/admin/js/demo.js')}}"></script>
-<script src="{{url('public/assets/admin/selector/select2/js/select2.full.js')}}"></script>
+<script src="{{url('assets/admin/js/adminlte.min.js')}}"></script>
+<script src="{{url('assets/admin/js/demo.js')}}"></script>
+<script src="{{url('assets/admin/selector/select2/js/select2.full.js')}}"></script>
 
 
 <script>

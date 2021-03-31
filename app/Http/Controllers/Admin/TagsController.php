@@ -16,7 +16,7 @@ class TagsController extends Controller
      */
     public function index()
     {
-        $tags = Tag::paginate(5);
+        $tags = Tag::paginate(3);
         return view('admin.tags.index', compact('tags'));
     }
 
@@ -27,9 +27,14 @@ class TagsController extends Controller
      */
     public function create()
     {
-        $currentID = DB::table('Tags')->select('id')->orderBy('id', 'desc')->limit(1)->get();;
-        $currentID = $currentID[0]->id;
-        $last = ++$currentID;
+
+        $currentID = DB::table('Tags')->select('id')->latest('id')->first();
+        if ($currentID != NULL) {
+            ++$currentID->id;
+        }
+
+        $last = $currentID->id ?: "Create some post to know next ID";
+
         return view('admin.tags.create', compact('last'));
     }
 

@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::orderby('id', 'desc')->paginate(5);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -30,22 +30,15 @@ class PostController extends Controller
      */
     public function create()
     {
-        $id = DB::table('Posts')
-            ->select('id')
-            ->orderBy('id', 'desc') //latest($id)
-            ->limit(1)
-            ->get();
-
-        $newId = 1;
-
-        if (isset($id[0]->id)) {
-            $currentID = $id[0]->id;
-            $newId = ++$currentID;
+        $currentID = DB::table('Posts')->select('id')->latest('id')->first();
+        if ($currentID != NULL) {
+            ++$currentID->id;
         }
+
+        $newId = $currentID->id ?: "Create some post to know next ID";
 
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
-
 
         return view('admin.posts.create', compact('newId', 'categories', 'tags'));
     }
