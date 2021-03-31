@@ -118,13 +118,13 @@
                                 </div>
                             </div>
                             <div>
-                                <img src="{{url('public/app/public/'.$post->thumbnail)}}"
+                              <img src="{{asset('files/'.$post->thumbnail)}}"
                                      width="40px" height="40px" style="border-radius: 50%"/>
                             </div>
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary mb-3">Создать</button>
+                        <button type="submit" class="btn btn-primary mb-3">Update</button>
                     </form>
 
                 </div>

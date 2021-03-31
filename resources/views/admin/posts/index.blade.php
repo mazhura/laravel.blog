@@ -83,7 +83,7 @@
                                     <td>{{$post->description}}</td>
                                     @if($post->thumbnail !== null )
                                         <td>
-                                            <img src="{{url('public/app/public/'.$post->thumbnail)}}"
+                                            <img src="{{asset('files/'.$post->thumbnail)}}"
                                                  width="40px" height="40px" style="border-radius: 50%"/>
                                         </td>
                                     @else
@@ -93,7 +93,13 @@
                                     @endif
                                     <td>{{$post->content}}</td>
                                     <td>{{$post->category->title}}</td>
-                                    <td>{{$post->tags->pluck('title')->join(' , ')}}</td>
+                                    <td>@if(0 == count($post->tags->pluck('title')))
+                                            No tag
+                                        @else
+                                            {{$post->tags->pluck('title')->join(' , ')}}
+                                        @endif
+
+                                    </td>
 
                                     <td>{{$post->created_at}}</td>
                                     <td class="btn-group">

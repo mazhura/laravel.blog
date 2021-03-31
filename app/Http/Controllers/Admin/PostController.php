@@ -32,10 +32,10 @@ class PostController extends Controller
     {
         $currentID = DB::table('Posts')->select('id')->latest('id')->first();
         if ($currentID != NULL) {
-            ++$currentID->id;
+            $newId = ++$currentID->id;
+        }else{
+            $newId = 1;
         }
-
-        $newId = $currentID->id ?: "Create some post to know next ID";
 
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
@@ -60,21 +60,14 @@ class PostController extends Controller
         ]);
 
         $data = $request->all();
-
-        if ($request->hasFile('thumbnail')) {
-            $folder = date('Y-m-d');
-
-            $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}");
-
-
-        }
+        $data['thumbnail'] = Post::uploadImage($request);
 
 
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
 
-
         session()->flash('success', 'Post created');
+
         return redirect()->route('posts.index');
     }
 
@@ -98,10 +91,12 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+
         $categories = Category::pluck('title', 'id');
         $tags = Tag::pluck('title', 'id');
+
         if ($post == null) {
-            return redirect()->route('posts.index');
+            return redirect()->route('admin.posts.index');
         }
         return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
@@ -115,7 +110,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*$request->validate([
+       /* $request->validate([
             'title' => 'required',
             'description' => 'required',
             'content' => 'required',
@@ -124,14 +119,14 @@ class PostController extends Controller
         ]);*/
 
         $post = Post::find($id);
+
         $data = $request->all();
 
         if ($request->hasFile('thumbnail')) {
-            Storage::delete($post->thumbnail);
-
+            Storage::disk('public')->delete($post->thumbnail); //TODO fix photo delete
             $folder = date('Y-m-d');
-            $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}");
-        }
+            $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}"); //TODO incorrect photo update
+            }
 
         $post->update($data);
         $post->tags()->sync($request->tags);
@@ -148,8 +143,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        $post->tags()->sync([]);
         Storage::delete($post->thumbnail);
+        $post->tags()->sync([]);
         $post->delete();
 
         return redirect()->route('posts.index')->with('success', 'Post deleted!');
