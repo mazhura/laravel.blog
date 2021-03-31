@@ -36,9 +36,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-Route::get('/test',[TestController::class,'index']);
-
-
+Route::get('/register',[UserController::class,'create'])->name('register.create');
+Route::post('/register',[UserController::class,'store'])->name('register.store');
 
 
 

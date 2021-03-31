@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderby('id', 'desc')->paginate(5);
+        $posts = Post::with('category','tags')->orderby('id', 'desc')->paginate(5);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -110,13 +110,13 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-       /* $request->validate([
+       $request->validate([
             'title' => 'required',
             'description' => 'required',
             'content' => 'required',
             'category_id' => 'required|integer',
             'thumbnail' => 'nullable|image',
-        ]);*/
+        ]);
 
         $post = Post::find($id);
 
