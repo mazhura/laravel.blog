@@ -20,8 +20,20 @@
     </div>
 @endif
 
+@if(session()->has('error'))
+    <div class="alert alert-danger">
+        {{session('error')}}
+    </div>
+@endif
 
-@if(\Illuminate\Support\Facades\Auth::check())
+@if(session()->has('warning'))
+    <div class="alert alert-warning">
+        {{session('warning')}}
+    </div>
+@endif
+
+
+@if(Auth::check())
     <a href="{{route('logout')}}">Log out</a>
 @endif
 

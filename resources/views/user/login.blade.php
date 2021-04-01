@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +29,7 @@
                     </ul>
                 </div>
             @endif
+
             @if(session()->has('error'))
                 <div class="alert alert-danger">
                 {{session('error')}}
@@ -37,7 +38,8 @@
             <form action="{{route('login.store')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email" name="email" value="{{old('email')}}">
+                    {{--Basic there are email auth,you can type login, but not necessary--}}
+                    <input type="text" class="form-control" placeholder="Email" name="email" value="{{old('email')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>

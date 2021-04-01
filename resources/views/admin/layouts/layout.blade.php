@@ -149,7 +149,7 @@
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">--}}
-            <span class="brand-text font-weight-light">На главную</span>
+            <span class="brand-text font-weight-light">Home page</span>
         </a>
 
         <!-- Sidebar -->
@@ -161,7 +161,7 @@
                          alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Михаил Мажура</a>
+                    <a href="#" class="d-block">{{Auth::user()->name}}</a>
                 </div>
             </div>
 
