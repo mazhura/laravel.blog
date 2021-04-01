@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href='{{asset('/assets/admin/css/admin.css')}}'>
-    <link rel="stylesheet" href="{{url('/assets/admin/selector/select2-bootstrap4-theme/select2-bootstrap4.css')}}">
-    <link rel="stylesheet" href="{{url('/assets/admin/selector/select2/css/select2.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/admin/selector/select2-bootstrap4-theme/select2-bootstrap4.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/admin/selector/select2/css/select2.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->

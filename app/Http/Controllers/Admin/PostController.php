@@ -123,7 +123,7 @@ class PostController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('thumbnail')) {
-            Storage::disk('public')->delete($post->thumbnail); //TODO fix photo delete
+            Storage::delete($post->thumbnail);
             $folder = date('Y-m-d');
             $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}"); //TODO incorrect photo update
             }
