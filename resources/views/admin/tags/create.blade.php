@@ -49,12 +49,7 @@
                 <div class="card-body">
                     <form action="{{route('tags.store')}}" method="post">
                         @csrf
-                        <div class="mb-3 row">
-                            <label for="id" class="col-sm-2 col-form-label">ID (auto)</label>
-                            <div class="col-sm-10">
-                                <input type="text" readonly disabled class="form-control" id="id" value="{{$last}}">
-                            </div>
-                        </div>
+
                         <div class="mb-3 row">
                             <label for="title" class="col-sm-2 col-form-label">Tag name</label>
                             <div class="col-sm-10">

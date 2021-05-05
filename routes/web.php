@@ -4,25 +4,16 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagsController;
-use App\Http\Controllers\UserController;
+    use App\Http\Controllers\HomeController;
+    use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
-
-
-Route::get('/', function () {return view('welcome');})->name('welcome');
-
+Route::get('/', [HomeController::class,'index'])->name('home.index');
+Route::get('/article/{slug}', [HomeController::class,'show'])->name('home.show');
+Route::get('/category/{slug}', [CategoryController::class,'show'])->name('categories.single');
+Route::get('/tag/{slug}', [TagsController::class,'show'])->name('tag.single');
 
 Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
     Route::get('/', [MainController::class, 'index'])->name('admin.index');
@@ -40,10 +31,8 @@ Route::group(['middleware'=>'guest'],function (){
 
 Route::get('/logout',[UserController::class,'logout'])->name('logout')->middleware('auth');
 
-Route::fallback(function (){
-    return redirect()->route('welcome');
-});
+/*Route::fallback(function (){
+    return redirect()->route('home.index');
+});*/
 
-
-//todo make API
 

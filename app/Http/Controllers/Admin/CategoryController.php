@@ -29,15 +29,15 @@ class CategoryController extends Controller
     public function create()
     {
 
-        $currentID = DB::table('Categories')->select('id')->latest('id')->first();
+        /*$currentID = DB::table('Categories')->select('id')->latest('id')->first();
         if ($currentID != NULL) {
             ++$currentID->id;
         }
 
-        $last = $currentID->id ?: "Create some post to know next ID";
+        $last = $currentID->id ?: "Create some post to know next ID";*/
 
 
-        return view('admin.categories.create', compact('last'));
+        return view('admin.categories.create');
     }
 
     /**
@@ -101,14 +101,20 @@ class CategoryController extends Controller
     public function destroy(int $id)
     {
         $category = Category::find($id);
+        if($category->posts->count())
+        {
+            return redirect()->back()->with('error','Error! Some posts have this category');
+        }
+
         $category->delete();
-        session()->flash('deleted', 'Category with id ' . $id . ' deleted successfully');
+        session()->flash('success', 'Category deleted successfully');
 
         return redirect()->back();
     }
 
     public function show($id)
     {
+        dd($id);
         return redirect()->route('categories.index');
     }
 }

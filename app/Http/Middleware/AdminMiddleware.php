@@ -21,7 +21,7 @@ class AdminMiddleware
         {
             return $next($request);
         }
-        return redirect()->route('welcome');
+        return redirect()->route('home.index');
         //abort(404);
     }
 }

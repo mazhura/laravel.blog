@@ -30,7 +30,7 @@ class UserController extends Controller
         session()->flash('success', 'Successfully registered and authorized!');
         Auth::login($user);
 
-        return redirect()->route('welcome');
+        return redirect()->route('home.index');
 
     }
 
@@ -53,10 +53,10 @@ class UserController extends Controller
         ])) {
             session()->flash('success', 'You are logged!');
             if (Auth::user()->is_admin) {
-                return redirect()->route('admin.index')->with('success', 'Welcome to index panel!');
+                return redirect()->route('admin.index')->with('success', 'Welcome to admin panel!');
             } else {
                 session()->flash('warning', 'You are not admin');
-                return redirect()->route('welcome');
+                return redirect()->route('home.index');
             }
 
 

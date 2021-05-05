@@ -17,22 +17,7 @@
                         </ol>
                     </div>
                 </div>
-                @if(session('deleted'))
-                    <div class="alert alert-success" role="alert">
-                        {{session('deleted')}}
-                    </div>
-                @elseif(session('not_deleted'))
-                    <div class="alert alert-danger" role="alert">
-                        {{session('not_deleted')}}
-                    </div>
-                @else
-                @endif
-
-                @if(session('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{session('success')}}
-                    </div>
-                @endif
+                @include('error')
 
             </div><!-- /.container-fluid -->
         </section>

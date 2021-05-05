@@ -13,7 +13,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="{{route('welcome')}}"><b>Laravel</b>Blog</a>
+        <a href="{{route('home.index')}}"><b>Laravel</b>Blog</a>
     </div>
 
     <div class="card">
@@ -74,7 +74,7 @@
 
             <div class="text-center">
 
-                <a href="{{route('login.create')}}" class="text-center">I already have a membership</a>
+                <a href="{{route('login.create')}}" class="text-center">I already have an account</a>
             </div>
         </div>
         <!-- /.form-box -->

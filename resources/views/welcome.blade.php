@@ -14,32 +14,37 @@
 </head>
 <body>
 
+
 @if(session()->has('success'))
     <div class="alert alert-success">
         {{session('success')}}
     </div>
 @endif
-
 @if(session()->has('error'))
     <div class="alert alert-danger">
         {{session('error')}}
     </div>
 @endif
-
 @if(session()->has('warning'))
     <div class="alert alert-warning">
         {{session('warning')}}
     </div>
 @endif
-
-
 @if(Auth::check())
     <a href="{{route('logout')}}">Log out</a>
 @endif
 
 
+<div class="mt-3">
+    @if(!Auth::check())
+<a href="{{route('login.create')}}">Login</a>
+<a href="{{route('register.create')}}">Register</a>
+    @endif
+</div>
+
+{{http_response_code()}}
 
 
-<h1 class="mx-5">HOME PAGE</h1>
+
 </body>
 </html>

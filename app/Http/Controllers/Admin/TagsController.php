@@ -28,14 +28,14 @@ class TagsController extends Controller
     public function create()
     {
 
-        $currentID = DB::table('Tags')->select('id')->latest('id')->first();
+        /*$currentID = DB::table('Tags')->select('id')->latest('id')->first();
         if ($currentID != NULL) {
             ++$currentID->id;
         }
 
-        $last = $currentID->id ?: "Create some post to know next ID";
+        $last = $currentID->id ?: "Create some post to know next ID";*/
 
-        return view('admin.tags.create', compact('last'));
+        return view('admin.tags.create');
     }
 
     /**
@@ -97,9 +97,20 @@ class TagsController extends Controller
     public function destroy($id)
     {
         $Tag = Tag::find($id);
+        if ($Tag->posts->count())
+        {
+            return redirect()->back()->with('error','Error! Some posts have this tag');
+        }
+
+
         $Tag->delete();
         session()->flash('deleted', 'Tag with id ' . $id . ' deleted successfully');
 
         return redirect()->back();
+    }
+
+    public function show($slug)
+    {
+        dd($slug);
     }
 }
