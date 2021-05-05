@@ -53,27 +53,28 @@
                 </div>
                 <div class="nav-item">
                     @if(!Auth::check())
-                    <a href="{{route('login.create')}}">Login</a>
-                        @else
+                        <a href="{{route('login.create')}}">Login</a>
+                    @else
                         <a href="{{route('admin.index')}}">Admin</a>/<a href="{{route('logout')}}">Logout</a>
-                        @endif
+                    @endif
                 </div>
             </nav>
         </div><!-- end container-fluid -->
     </header><!-- end market-header -->
 
-    @yield('header')
+    @yield('page-title')
 
-    <section class="section lb @if(!Request::is('/')) m3rem @endif">
+    <section class="section lb">
         <div class="container">
             <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                @include('home.layouts.sidebar')<!-- end sidebar -->
+                </div>
+
                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                   @yield('content')
+                    @yield('content')
                 </div><!-- end col -->
 
-                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                    @include('home.layouts.sidebar')<!-- end sidebar -->
-                </div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
     </section>

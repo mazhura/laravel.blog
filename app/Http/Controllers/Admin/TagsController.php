@@ -111,6 +111,8 @@ class TagsController extends Controller
 
     public function show($slug)
     {
-        dd($slug);
+        $tag = Tag::where('slug',$slug)->firstOrFail();
+        $posts = $tag->posts()->with('category')->orderBy('id','desc')->paginate(2);
+        return view('home.tags.show',compact('tag','posts'));
     }
 }

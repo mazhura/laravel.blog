@@ -112,9 +112,11 @@ class CategoryController extends Controller
         return redirect()->back();
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        dd($id);
-        return redirect()->route('categories.index');
+        $category = Category::where('slug',$slug)->firstOrFail();
+        $posts = $category->posts()->orderby('id','desc')->paginate(2);
+
+        return view('home.categories.show',compact('category','posts'));
     }
 }
