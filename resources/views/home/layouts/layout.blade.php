@@ -80,7 +80,7 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="row">
+      {{--      <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                     <div class="widget">
                         <h2 class="widget-title">Recent Posts</h2>
@@ -194,7 +194,7 @@
                     </div><!-- end widget -->
                 </div><!-- end col -->
             </div><!-- end row -->
-
+--}}
 
             <div class="dmtop">Scroll to Top</div>
 
