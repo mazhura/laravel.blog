@@ -46,9 +46,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('categories.single',['slug'=>'make-money'])}}">Make Money</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.blade.php">Contact Us (FIX)</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="nav-item">
