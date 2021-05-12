@@ -29,14 +29,6 @@ class CategoryController extends Controller
     public function create()
     {
 
-        /*$currentID = DB::table('Categories')->select('id')->latest('id')->first();
-        if ($currentID != NULL) {
-            ++$currentID->id;
-        }
-
-        $last = $currentID->id ?: "Create some post to know next ID";*/
-
-
         return view('admin.categories.create');
     }
 

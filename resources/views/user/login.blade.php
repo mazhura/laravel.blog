@@ -38,7 +38,6 @@
             <form action="{{route('login.store')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    {{--Basic there are email auth,you can type login, but not necessary--}}
                     <input type="text" class="form-control" placeholder="Email" name="email" value="{{old('email')}}">
                     <div class="input-group-append">
                         <div class="input-group-text">
